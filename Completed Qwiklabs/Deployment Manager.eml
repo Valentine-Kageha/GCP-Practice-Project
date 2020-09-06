@@ -1,0 +1,129 @@
+Delivered-To: valentinemdeizi@gmail.com
+Received: by 2002:a05:6838:336:0:0:0:0 with SMTP id d22csp2853334nkd;
+        Sun, 6 Sep 2020 09:04:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKdWwr1orIa1cKUNV2ALvo9Wteeuu3zMSLI5UilzveKDLXHXNbM8RbGzYfyfGJ8lYUu6jQ
+X-Received: by 2002:a37:2782:: with SMTP id n124mr15263135qkn.15.1599408289731;
+        Sun, 06 Sep 2020 09:04:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599408289; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bZgrObkDzgbpoU/OD7T3jpBPmT+UrUqI+l18A/PV7ibc//CsCy4201swQfMZuHpAEZ
+         bt3ryKpamVPJkE7pk9E06f6K+pO3Jm7VqQjSc58AdrYR40uNsmPE/pEi58tnpKTSsRQy
+         SltotUUkzyFgY5UvueLQlpNWAcmpi84BHWSOFl2QaIVUq5h4EGhSNpEBIHt86zGwVozI
+         GT4eb7NaXaz+QnrBC8s0wPskLpEabOvdrAPaoWeqyH183OYgo0+L9gbChkPmgnhercac
+         z3nl2OCub6r2c+mU8RJmszBa9k1PLrorpGtJxO+ciPJKJ/tkUjP/DhRpdTlPm9aECyYK
+         pEqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:content-transfer-encoding:mime-version:subject
+         :message-id:to:from:date:dkim-signature:dkim-signature;
+        bh=jT1703yywTxdYznKep3AUDKBlbstVGkfJKJSg9Pznoc=;
+        b=qI5hBLrV5U+BLByc5P2EENWHRve9UrJpe11UqU93FmoZf9pRWX3jFu8A7cJUaLYMIE
+         nHOKLqNR2m2Z8u3++xpI+3tgBr++S2RW7HrwokmOzxZtLykJE7zSUg7N3smkSadxQMi/
+         zQw2bwKva+E6v5fD5bsMl3V+26qD1NSfEkolIbo7CkwEeAPCUbU50ck883yZecwVVHpC
+         nmpQJ2kBQmTNW8v17yB5H6jZOHpnJQfZXeX8wgFfdWRxAz3BwkXHBWVgB2AfRbvv2pdU
+         skFlE3H6srGK5BUtQ9y6fcnNV8Sh3xbs+RmLepDOiXvST8qCMzaVnxdceMSPBvxlp061
+         /WeQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@qwiklab.com header.s=rvejdozjz2h7qbsmuaoixr4fgufd2btw header.b=C04QvvXJ;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=dhVXl0jf;
+       spf=pass (google.com: domain of 010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com designates 54.240.48.27 as permitted sender) smtp.mailfrom=010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com
+Return-Path: <010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com>
+Received: from a48-27.smtp-out.amazonses.com (a48-27.smtp-out.amazonses.com. [54.240.48.27])
+        by mx.google.com with ESMTPS id s8si8114318qvb.121.2020.09.06.09.04.49
+        for <valentinemdeizi@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Sun, 06 Sep 2020 09:04:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com designates 54.240.48.27 as permitted sender) client-ip=54.240.48.27;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@qwiklab.com header.s=rvejdozjz2h7qbsmuaoixr4fgufd2btw header.b=C04QvvXJ;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=dhVXl0jf;
+       spf=pass (google.com: domain of 010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com designates 54.240.48.27 as permitted sender) smtp.mailfrom=010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=rvejdozjz2h7qbsmuaoixr4fgufd2btw; d=qwiklab.com; t=1599408289;
+	h=Date:From:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding;
+	bh=jT1703yywTxdYznKep3AUDKBlbstVGkfJKJSg9Pznoc=;
+	b=C04QvvXJEMBtgpXWwWFjBZZdl3kYLEhFpgQE6RtWlg4UnBoy+JAzSS+TlBljftrT
+	Bt8d9hG8ZlnDmvn9AkLpzVzVKikkS6/hSJjf7dWxBz7PM+uC5i26OVe4agmkke1IFrL
+	G+U17BAv7rL++sQkOJXAoLZgiIz7XQGRDDHM3f7g=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1599408289;
+	h=Date:From:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=jT1703yywTxdYznKep3AUDKBlbstVGkfJKJSg9Pznoc=;
+	b=dhVXl0jfYAeAlrQSiP2oe0uIbbI+LLNh6pUXWSQk335yngSTZ3CnPqkHuTZF7eG9
+	ax8MWIP5daGFqio/7Es4kIjs6bd9t6JZ5tKiprTwnJVPxxX6hcwu/tG0x578Ba5rE14
+	rIjIZNYU7fEuUO8bGyQozC6i9YIVGrkcGfyW87L4=
+Date: Sun, 6 Sep 2020 16:04:49 +0000
+From: noreply@qwiklab.com
+To: valentinemdeizi@gmail.com
+Message-ID: <010001746429b604-e22d58fd-c868-43d6-8a07-88991b6a5c0c-000000@email.amazonses.com>
+Subject: You finished a Qwiklab
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5f5508a0c6830_2c2ac62548796416481";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-SES-Outgoing: 2020.09.06-54.240.48.27
+Feedback-ID: 1.us-east-1.kUmYnXz14cvSe3aRRnyu7h6J8T0F45Xax4hILd5cEww=:AmazonSES
+
+
+----==_mimepart_5f5508a0c6830_2c2ac62548796416481
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi Valentine Kageha,
+You have completed the lab Automating the Deployment of Infrastructure Using Deployment Manager.
+Your completion percentage was 100%.
+Get more information by selecting the
+Labs Taken tab from your dashboard in Qwiklabs, here: https://run.qwiklabs.com/?utm_campaign=dashboard&utm_medium=email&utm_source=endlab
+
+Thank you,
+Qwiklabs Support
+support@qwiklabs.com
+
+
+
+----==_mimepart_5f5508a0c6830_2c2ac62548796416481
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html style="font-size: 100%; margin: 0; padding: 0;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<style>body {
+background: #FFFFFF; color: #202124; font-family: "Roboto", "Helvetica", sans-serif; font-weight: 400; line-height: 1.5; padding: 1.5rem;
+}
+</style>
+</head>
+<body style='color: #202124; font-family: "Roboto", "Helvetica", sans-serif; font-weight: 400; line-height: 1.5; margin: 0; padding: 1.5rem;' bgcolor="#FFFFFF">
+<table align="center" style="border-collapse: collapse; border-spacing: 0; width: 100%; max-width: 550px; margin: 0 auto; padding: 0; border: none;">
+<tr style="margin: 0; padding: 0;">
+<td style="margin: 0; padding: 0 0 1.5rem;" align="center">
+<img width="140" alt="Qwiklabs" src="https://cdn.qwiklabs.com/images/logo_blue.png" style="margin: 0; padding: 0;">
+</td>
+</tr>
+<tr style="margin: 0; padding: 0;">
+<td style="margin: 0; padding: 0 0 3rem;">
+<p style='font-family: "Roboto", "Helvetica", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0; padding: 0.75rem 0 32px;'>Hi Valentine Kageha,</p> <p style='font-family: "Roboto", "Helvetica", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0; padding: 0.75rem 0 32px;'>You completed the lab <em style="margin: 0; padding: 0;">Automating the Deployment of Infrastructure Using Deployment Manager</em>. Your completion percentage was 100%. Get more information by visiting your <a href="https://run.qwiklabs.com/?utm_campaign=dashboard&amp;utm_medium=email&amp;utm_source=endlab" style="color: #1A73E8; margin: 0; padding: 0;">dashboard</a>.</p>
+
+<p style='font-family: "Roboto", "Helvetica", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0; padding: 0.75rem 0 32px;'>We want to know what you thought about this lab. Please take our short survey
+ <a href="https://www.surveymonkey.com/r/FRT3SNZ?lab_title=Automating%20the%20Deployment%20of%20Infrastructure%20Using%20Deployment%20Manager" style="color: #1A73E8; margin: 0; padding: 0;">here</a>.</p>
+<p style='font-family: "Roboto", "Helvetica", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0; padding: 0.75rem 0 32px;'>Thank you,<br style="margin: 0; padding: 0;">Qwiklabs Support<br style="margin: 0; padding: 0;"> <a href="mailto:%20support@qwiklabs.com" style="color: #1A73E8; margin: 0; padding: 0;">support@qwiklabs.com</a> <br style="margin: 0; padding: 0;"></p>
+
+
+</td>
+</tr>
+<tr style="margin: 0; padding: 0;">
+<td style="border-top-width: 2px; border-top-color: #DFE1E5; border-top-style: solid; color: #5F6368; font-size: 12px; margin: 0; padding: 1.5rem 0 0;" align="center">
+© Qwiklabs
+2020
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+----==_mimepart_5f5508a0c6830_2c2ac62548796416481--
