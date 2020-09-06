@@ -1,0 +1,32 @@
+LAB: Virtual Private Networks (VPN)
+
+
+*************CREATING VPN1 NETWORK***************************
+
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" target-vpn-gateways create "vpn-1" --region "us-central1" --network "vpn-network-1"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-1-rule-esp" --region "us-central1" --address "34.122.223.109" --ip-protocol "ESP" --target-vpn-gateway "vpn-1"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-1-rule-udp500" --region "us-central1" --address "34.122.223.109" --ip-protocol "UDP" --ports "500" --target-vpn-gateway "vpn-1"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-1-rule-udp4500" --region "us-central1" --address "34.122.223.109" --ip-protocol "UDP" --ports "4500" --target-vpn-gateway "vpn-1"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" vpn-tunnels create "vpn-1-tunnel-1" --region "us-central1" --ike-version "2" --target-vpn-gateway "vpn-1"
+
+
+**************CREATE VPN2 AND TUNNEL2TO1 ************************
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" target-vpn-gateways create "vpn-2" --region "europe-west1" --network "vpn-network-2"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-2-rule-esp" --region "europe-west1" --address "34.77.143.123" --ip-protocol "ESP" --target-vpn-gateway "vpn-2"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-2-rule-udp500" --region "europe-west1" --address "34.77.143.123" --ip-protocol "UDP" --ports "500" --target-vpn-gateway "vpn-2"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" forwarding-rules create "vpn-2-rule-udp4500" --region "europe-west1" --address "34.77.143.123" --ip-protocol "UDP" --ports "4500" --target-vpn-gateway "vpn-2"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" vpn-tunnels create "tunnel2to1" --region "europe-west1" --peer-address "34.122.223.109" --shared-secret "gcprocks" --ike-version "2" --local-traffic-selector "0.0.0.0/0" --target-vpn-gateway "vpn-2"
+
+gcloud compute --project "qwiklabs-gcp-02-b948a7c1d6dd" routes create "tunnel2to1-route-1" --network "vpn-network-2" --next-hop-vpn-tunnel "tunnel2to1" --next-hop-vpn-tunnel-region "europe-west1" --destination-range "10.5.4.0/24"
+
+
